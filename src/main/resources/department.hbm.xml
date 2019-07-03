@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "com.exampleboot.demo.model.Department" table = "DEPARTMENT">
+
+        <meta attribute = "class-description">
+            This class contains the employee detail.
+        </meta>
+
+        <id name = "id" type = "java.lang.Integer" column = "did">
+            <generator class="identity"/>
+        </id>
+
+        <property name = "name" column = "name" type = "string"/>
+
+        <set name="studentSet" table="STUDENT" cascade="all"
+             inverse="true">
+            <key column="did" not-null="true" />
+            <one-to-many class="com.exampleboot.demo.model.Student" />
+        </set>
+
+    </class>
+</hibernate-mapping>
